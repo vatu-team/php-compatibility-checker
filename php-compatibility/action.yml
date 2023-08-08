@@ -32,7 +32,7 @@ runs:
     - name: 'Download PHPCompatibility config.'
       shell: bash
       run: |
-          curl -L https://raw.githubusercontent.com/vatu-team/workflows/main/config/phpcompatibility.xml.dist --output phpcompatibility.dist.xml --fail
+          curl -L https://raw.githubusercontent.com/vatu-team/php-compatibility-checker/base-workflow-file/phpcompatibility.dist.xml --output phpcompatibility.dist.xml --fail
       continue-on-error: false
 
     - name: 'Debug.'
