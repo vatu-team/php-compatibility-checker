@@ -11,9 +11,8 @@ description: ''
 inputs:
 
   php-version:
-    description: "Version of PHP to test against. Eg, `['8.2', '8.3']`"
-    required: false
-    default: "['8.0', '8.1', '8.2', '8.3']"
+    description: "Version of PHP to test against. Eg, `8.2`"
+    required: true
 
 runs:
   using: 'composite'
