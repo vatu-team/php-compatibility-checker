@@ -32,20 +32,15 @@
 	</rule>
 
 	<!--
+		WordPress (https://wordpress.org)
+	-->
+
+	<!--
 		PHPCompatibilityParagonieSodiumCompat prevents false positives in `sodium_compat`.
 		However, because these files are included in a non-standard path, false positives are triggered in WordPress Core.
 	-->
-	<exclude-pattern>*/wp-includes\/sodium_compat\/lib\/php72compat_const\.php$</exclude-pattern>
-
-	<rule ref="PHPCompatibility.FunctionUse.NewFunctions.sodium_crypto_sign_keypair_from_secretkey_and_publickeyFound">
-		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
-	</rule>
-	<rule ref="PHPCompatibility.FunctionUse.NewFunctions.sodium_padFound">
-		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
-	</rule>
-	<rule ref="PHPCompatibility.FunctionUse.NewFunctions.sodium_unpadFound">
-		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
-	</rule>
+	<exclude-pattern>*wp-includes\/sodium_compat\/lib\/php72compat_const\.php$</exclude-pattern>
+	<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
 
 	<!--
 		PHPCompatibilityParagonieRandomCompat prevents false positives in `random_compat`.
@@ -54,6 +49,23 @@
 	<rule ref="PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecated">
 		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
 	</rule>
+
+	<rule ref="HPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
+	</rule>
+
+	<rule ref="HPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
+	</rule>
+
+	<rule ref="PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
+	</rule>
+
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
+	</rule>
+
 	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_dev_urandomDeprecatedRemoved">
 		<exclude-pattern>*wp-includes\/random_compat\/random_bytes_mcrypt\.php$</exclude-pattern>
 	</rule>
@@ -66,8 +78,16 @@
 
 	<!-- Allow the WP DB Class for use of `mysql_` extension in PHP < 7.0. -->
 	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved">
-		<exclude-pattern>*wp-includes\/wp-includes\/wp-db\.php$</exclude-pattern>
-		<exclude-pattern>*wp-includes\/wp-includes\/class-wpdb\.php$</exclude-pattern>
+		<exclude-pattern>*wp-includes\/wp-db\.php$</exclude-pattern>
+		<exclude-pattern>*wp-includes\/class-wpdb\.php$</exclude-pattern>
+	</rule>
+
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.mysql_get_client_infoDeprecatedRemoved">
+		<exclude-pattern>*wp-admin\/includes\/class-wp-site-health\.php$</exclude-pattern>
+	</rule>
+
+	<rule ref="PHPCompatibility.FunctionDeclarations.RemovedCallingDestructAfterConstructorExit.Found">
+		<exclude-pattern>*wp-includes\/class-simplepie\.php$</exclude-pattern>
 	</rule>
 
 	<!--
