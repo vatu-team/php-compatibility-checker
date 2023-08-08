@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+#
+# Vatu:    PHP Compatibility
+# Version: 0.1.0
+# Author:  Michael Bragg <mike@vatu.dev>
+
+name: 'PHP Compatibility'
+
+description: ''
+
+inputs:
+
+  php-version:
+    description: "Version of PHP to test against. Eg, `['8.2', '8.3']`"
+    required: false
+    default: "['8.0', '8.1', '8.2', '8.3']"
+
+runs:
+  using: 'composite'
+
+
+  steps:
+
+    - name: "Debug"
+      shell: bash
+      run: |
+        echo "PHP ${{ inputs.php-version }}"
