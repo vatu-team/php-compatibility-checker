@@ -46,4 +46,4 @@ runs:
     - name: 'Run PHP Compatibility Tests.'
       shell: bash
       run: |
-        ./tools/php-compat/vendor/bin/phpcs -p -s --colors --standard=phpcompatibility.xml.dist --extensions=php --runtime-set testVersion ${{ matrix.php-version }} ./
+        ./tools/php-compat/vendor/bin/phpcs -p -s --colors --standard=phpcompatibility.dist.xml --extensions=php --runtime-set testVersion ${{ matrix.php-version }} ./
