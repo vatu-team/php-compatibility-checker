@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+#
+# Vatu:    PHP Compatibility
+# Version: 0.1.0
+# Author:  Michael Bragg <mike@vatu.dev>
+
+name: 'PHP Compatibility'
+description: ''
+author: 'Vatu <hello@vatu.dev>'
+
+inputs:
+
+  php-version:
+    description: "Version of PHP to test against. Eg, `8.2`"
+    required: true
+
+runs:
+  using: 'composite'
+
+  steps:
+
+    - name: 'Install PHP Compatibility'
+      shell: bash
+      run: |
+        composer --working-dir=tools/php-compat require --dev squizlabs/php_codesniffer:"*"
+        composer --working-dir=tools/php-compat config allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+        composer --working-dir=tools/php-compat require --dev dealerdirect/phpcodesniffer-composer-installer
+        composer --working-dir=tools/php-compat require --dev phpcsstandards/phpcsdevtools:^1.0
+        composer --working-dir=tools/php-compat require phpcompatibility/php-compatibility:"dev-develop as 9.99.99"
+        composer --working-dir=tools/php-compat require phpcompatibility/phpcompatibility-wp:^2.0
+
+    - name: 'Download PHPCompatibility config.'
+      shell: bash
+      run: |
+          curl -L https://raw.githubusercontent.com/vatu-team/workflows/main/config/phpcompatibility.xml.dist --output phpcompatibility.dist.xml --fail
+      continue-on-error: false
+
+    - name: 'Debug.'
+      shell: bash
+      run: |
+        php --version
+        composer --version
+        phpcs --version
+        phpcs -i
+
+    - name: 'Run PHP Compatibility Tests.'
+      shell: bash
+      run: |
+        ./tools/php-compat/vendor/bin/phpcs -p -s --colors --standard=phpcompatibility.xml.dist --extensions=php --runtime-set testVersion ${{ matrix.php-version }} ./
