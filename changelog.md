@@ -7,26 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2023-08-08
+
 ### Added
 
-- TBC
-
-### Changed
-
-- N/A
-
-### Deprecated
-
-- N/A
-
-### Removed
-
-- N/A
-
-### Fixed
-
-- N/A
-
-### Security
-
-- N/A
+- Base workflow files for PHP Lint
+- Base workflow files for PHP Compatibility
+- PHP Compatibility config file
+- YAML Linting Workflow
