@@ -1,0 +1,46 @@
+---
+# Commit
+# Version 1.0.0
+# Author: Thoughts & Ideas <hello@thoughtsandideas.uk>
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: 'Commit'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '!dependabot/**'
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+concurrency:
+  group: ${{ github.workflow }}--${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+
+  yaml-lint:
+    name: 'YAML Lint'
+    runs-on: 'ubuntu-latest'
+
+    steps:
+
+      - name: 'Check out the repository.'
+        uses: 'actions/checkout@v3.5.3'
+
+      - name: 'Set up Python environment.'
+        uses: 'actions/setup-python@v4.7.0'
+        with:
+          python-version: '3.11'
+
+      - name: 'Install Python dependencies.'
+        run: |
+          pip install --user yamllint
+
+      - name: 'Run YML Lint tests.'
+        run: |
+          yamllint -d "{rules: {line-length: false}}" $(git ls-files '*.yaml' '*.yml')
