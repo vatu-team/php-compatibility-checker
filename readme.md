@@ -1,5 +1,7 @@
 # PHP Compatibility Checker
 
+[![Commit](https://github.com/vatu-team/php-compatibility-checker/actions/workflows/commit.yml/badge.svg)](https://github.com/vatu-team/php-compatibility-checker/actions/workflows/commit.yml)
+
 Action for checking projects for compatibility with different PHP versions.
 
 ## Features
