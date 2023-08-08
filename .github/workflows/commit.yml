@@ -24,7 +24,7 @@ jobs:
 
   yaml-lint:
     name: 'YAML Lint'
-    runs-on: 'self-hosted'
+    runs-on: 'ubuntu-latest'
 
     steps:
 
