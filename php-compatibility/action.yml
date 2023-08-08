@@ -39,7 +39,6 @@ runs:
       shell: bash
       run: |
         ./tools/php-compat/vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
-        ./tools/php-compat/vendor/bin/phpcs --config-set installed_paths $GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility-paragonie/PHPCompatibilityParagonieRandomCompat,$GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility-paragonie/PHPCompatibilityParagonieSodiumCompat,$GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility/PHPCompatibility,$GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility-wp/PHPCompatibilityWP
 
     - name: 'Debug.'
       shell: bash
