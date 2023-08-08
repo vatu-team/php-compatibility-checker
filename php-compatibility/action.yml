@@ -43,8 +43,12 @@ runs:
         ./tools/php-compat/vendor/bin/phpcs --version
         ./tools/php-compat/vendor/bin/phpcs -i
 
-    - name: 'Run PHP Compatibility Tests.'
+    - name: 'Setup PHP Code Sniffer Config.'
       shell: bash
       run: |
         ./tools/php-compat/vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
+
+    - name: 'Run PHP Compatibility Tests.'
+      shell: bash
+      run: |
         ./tools/php-compat/vendor/bin/phpcs -p -s --colors --standard=phpcompatibility.dist.xml --extensions=php --runtime-set testVersion ${{ matrix.php-version }} ./
