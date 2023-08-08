@@ -41,6 +41,11 @@
 	-->
 	<exclude-pattern>*wp-includes\/sodium_compat\/lib\/php72compat_const\.php$</exclude-pattern>
 	<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
+
+	<rule ref="PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Core\/Util\.php$</exclude-pattern>
+	</rule>
+
 	<!--
 		PHPCompatibilityParagonieRandomCompat prevents false positives in `random_compat`.
 		However, because these files are included in a non-standard path, false positives are triggered in WordPress Core.
@@ -168,6 +173,10 @@
 
 	<rule ref="PHPCompatibility.FunctionDeclarations.RemovedCallingDestructAfterConstructorExit.Found">
 		<exclude-pattern>*wp-includes\/class-simplepie\.php$</exclude-pattern>
+	</rule>
+
+	<rule ref="PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/functions\.php$</exclude-pattern>
 	</rule>
 
 	<!--
