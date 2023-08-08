@@ -22,23 +22,23 @@ runs:
     - name: 'Install PHP Compatibility'
       shell: bash
       run: |
-        composer --working-dir=tools/php-compat require --dev squizlabs/php_codesniffer:"*"
-        composer --working-dir=tools/php-compat config allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
-        composer --working-dir=tools/php-compat require --dev dealerdirect/phpcodesniffer-composer-installer
-        composer --working-dir=tools/php-compat require --dev phpcsstandards/phpcsdevtools:^1.0
-        composer --working-dir=tools/php-compat require phpcompatibility/php-compatibility:"dev-develop as 9.99.99"
-        composer --working-dir=tools/php-compat require phpcompatibility/phpcompatibility-wp:^2.0
+        composer --working-dir=tools/php-compat require --dev squizlabs/php_codesniffer:"*" --quiet
+        composer --working-dir=tools/php-compat config allow-plugins.dealerdirect/phpcodesniffer-composer-installer true --quiet
+        composer --working-dir=tools/php-compat require --dev dealerdirect/phpcodesniffer-composer-installer --quiet
+        composer --working-dir=tools/php-compat require --dev phpcsstandards/phpcsdevtools:^1.0 --quiet
+        composer --working-dir=tools/php-compat require phpcompatibility/php-compatibility:"dev-develop as 9.99.99" --quiet
+        composer --working-dir=tools/php-compat require phpcompatibility/phpcompatibility-wp:^2.0 --quiet
 
     - name: 'Download PHPCompatibility config.'
       shell: bash
       run: |
-          curl -L https://raw.githubusercontent.com/vatu-team/php-compatibility-checker/base-workflow-file/phpcompatibility.dist.xml --output phpcompatibility.dist.xml --fail
+          curl -s -L https://raw.githubusercontent.com/vatu-team/php-compatibility-checker/base-workflow-file/phpcompatibility.dist.xml --output phpcompatibility.dist.xml --fail
       continue-on-error: false
 
     - name: 'Setup PHP Code Sniffer Config.'
       shell: bash
       run: |
-        ./tools/php-compat/vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
+        ./tools/php-compat/vendor/bin/phpcs --config-set ignore_warnings_on_exit 1 --quiet
 
     - name: 'Debug.'
       shell: bash

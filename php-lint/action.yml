@@ -22,7 +22,7 @@ runs:
     - name: 'Install PHP Parallel Lint'
       shell: bash
       run: |
-        composer --working-dir=tools/php-compat require --dev php-parallel-lint/php-parallel-lint
+        composer --working-dir=tools/php-compat require --dev php-parallel-lint/php-parallel-lint --quiet
 
     - name: "Debug"
       shell: bash
