@@ -5,8 +5,8 @@
 # Author:  Michael Bragg <mike@vatu.dev>
 
 name: 'PHP Compatibility'
-
 description: ''
+author: 'Vatu <hello@vatu.dev>'
 
 inputs:
 
@@ -17,10 +17,16 @@ inputs:
 runs:
   using: 'composite'
 
-
   steps:
+
+    - name: 'Install PHP Parallel Lint'
+      shell: bash
+      run: |
+        composer --working-dir=tools/php-compat require --dev php-parallel-lint/php-parallel-lint
 
     - name: "Debug"
       shell: bash
       run: |
-        echo "PHP ${{ inputs.php-version }}"
+        php --version
+        composer --version
+        ./tools/php-compat/vendor/bin/parallel-lint --version
