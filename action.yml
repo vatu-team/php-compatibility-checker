@@ -30,3 +30,8 @@ runs:
         php --version
         composer --version
         ./tools/php-compat/vendor/bin/parallel-lint --version
+
+    - name: "Run PHP Parallel Lint"
+      shell: bash
+      run: |
+        ./tools/php-compat/vendor/bin/parallel-lint -e php --exclude */vendor --show-deprecated ./
