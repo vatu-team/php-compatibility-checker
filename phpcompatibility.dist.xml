@@ -50,11 +50,11 @@
 		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
 	</rule>
 
-	<rule ref="HPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
 		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
 	</rule>
 
-	<rule ref="HPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mb_overload_stringRemoved">
 		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
 	</rule>
 
