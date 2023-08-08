@@ -35,6 +35,12 @@ runs:
           curl -L https://raw.githubusercontent.com/vatu-team/php-compatibility-checker/base-workflow-file/phpcompatibility.dist.xml --output phpcompatibility.dist.xml --fail
       continue-on-error: false
 
+    - name: 'Setup PHP Code Sniffer Config.'
+      shell: bash
+      run: |
+        ./tools/php-compat/vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
+        ./tools/php-compat/vendor/bin/phpcs --config-set installed_paths $GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility-paragonie/PHPCompatibilityParagonieRandomCompat,$GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility-paragonie/PHPCompatibilityParagonieSodiumCompat,$GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility/PHPCompatibility,$GITHUB_WORKSPACE/tools/php-compat/vendor/php-compatibility/php-compatibility-wp/PHPCompatibilityWP
+
     - name: 'Debug.'
       shell: bash
       run: |
@@ -42,11 +48,6 @@ runs:
         composer --version
         ./tools/php-compat/vendor/bin/phpcs --version
         ./tools/php-compat/vendor/bin/phpcs -i
-
-    - name: 'Setup PHP Code Sniffer Config.'
-      shell: bash
-      run: |
-        ./tools/php-compat/vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
 
     - name: 'Run PHP Compatibility Tests.'
       shell: bash
