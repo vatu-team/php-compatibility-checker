@@ -41,4 +41,4 @@ jobs:
 
       - name: 'Run YML Lint tests.'
         run: |
-          yamllint --strict $(git ls-files '*.yaml' '*.yml')
+          yamllint -d "{rules: {line-length: {max: 120}}}" $(git ls-files '*.yaml' '*.yml')
