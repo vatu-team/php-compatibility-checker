@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://json.schemastore.org/dependabot-2.0.json
+
+version: 2
+updates:
+
+  # Project Workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "04:05"
+      timezone: "Europe/London"
+    commit-message:
+      prefix: "Upgraded"
+      prefix-development: "Upgraded"
