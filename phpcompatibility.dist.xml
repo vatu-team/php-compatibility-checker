@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<ruleset name="Vatu PHP Compatibility">
+
+	<!-- Version 0.1.0 -->
+	<description>Apply PHP compatibility checks to all project files</description>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Only scan PHP files. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
+	<!-- <arg name="cache" value=".cache/phpcompat.json"/> -->
+
+	<!-- Strip the filepaths down to the relevant bit. -->
+	<arg name="basepath" value="./"/>
+
+	<!-- Check up to 20 files simultaneously. -->
+	<arg name="parallel" value="20"/>
+
+	<!-- Show sniff codes in all reports. -->
+	<arg value="ps"/>
+
+	<!-- Code which doesn't go into production may have different requirements. -->
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/tools/*</exclude-pattern>
+	<exclude-pattern>*.phpt</exclude-pattern>
+
+	<!-- Ignore empty files. -->
+	<rule ref="Internal.NoCodeFound">
+		<severity>0</severity>
+	</rule>
+
+	<!--
+		PHPCompatibilityParagonieSodiumCompat prevents false positives in `sodium_compat`.
+		However, because these files are included in a non-standard path, false positives are triggered in WordPress Core.
+	-->
+	<exclude-pattern>*/wp-includes\/sodium_compat\/lib\/php72compat_const\.php$</exclude-pattern>
+
+	<rule ref="PHPCompatibility.FunctionUse.NewFunctions.sodium_crypto_sign_keypair_from_secretkey_and_publickeyFound">
+		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.NewFunctions.sodium_padFound">
+		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.NewFunctions.sodium_unpadFound">
+		<exclude-pattern>*wp-includes\/sodium_compat\/src\/Compat\.php$</exclude-pattern>
+	</rule>
+
+	<!--
+		PHPCompatibilityParagonieRandomCompat prevents false positives in `random_compat`.
+		However, because these files are included in a non-standard path, false positives are triggered in WordPress Core.
+	-->
+	<rule ref="PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecated">
+		<exclude-pattern>*wp-includes\/random_compat\/byte_safe_strings\.php$</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_dev_urandomDeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/random_bytes_mcrypt\.php$</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mcryptDeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/random_bytes_mcrypt\.php$</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.mcrypt_create_ivDeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/random_compat\/random_bytes_mcrypt\.php$</exclude-pattern>
+	</rule>
+
+	<!-- Allow the WP DB Class for use of `mysql_` extension in PHP < 7.0. -->
+	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mysql_DeprecatedRemoved">
+		<exclude-pattern>*wp-includes\/wp-includes\/wp-db\.php$</exclude-pattern>
+		<exclude-pattern>*wp-includes\/wp-includes\/class-wpdb\.php$</exclude-pattern>
+	</rule>
+
+	<!--
+		Guzzle (https://github.com/guzzle/)
+	-->
+
+	<!--
+		False Positive:
+		Provides its own fallback for `each()`. See: https://github.com/guzzle/promises/blob/master/src/functions.php#L258
+	-->
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.eachDeprecated">
+		<exclude-pattern>*vendor\/guzzlehttp\/promises\/src\/functions\.php$</exclude-pattern>
+		<exclude-pattern>*vendor\/guzzlehttp\/promises\/src\/Utils\.php$</exclude-pattern>
+	</rule>
+
+	<!--
+		Gravity Forms
+	-->
+	<!-- False Positive: Used as fallback provided for backwards compatibility. -->
+	<rule ref="PHPCompatibility.Variables.RemovedPredefinedGlobalVariables.http_raw_post_dataDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/includes\/webapi\/webapi\.php</exclude-pattern>
+	</rule>
+	<!-- False Positive: Used in a deprecated function for backwards compatibility. -->
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_rijndael_256DeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.mcrypt_get_iv_sizeDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mcryptDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_mode_ecbDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_mode_ecbDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.mcrypt_encryptDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mcryptDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mcryptDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_mode_ecbDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.mcrypt_create_ivDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Extensions.RemovedExtensions.mcryptDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_randDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.mcrypt_decryptDeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/common\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.Constants.RemovedConstants.mcrypt_rijndael_128DeprecatedRemoved">
+		<exclude-pattern>*plugins/\gravityforms\/includes/fields/class-gf-field-captcha\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionUse.RemovedFunctions.get_magic_quotes_gpcDeprecated">
+		<exclude-pattern>*plugins/\gravityforms\/forms_model\.php</exclude-pattern>
+	</rule>
+
+</ruleset>
