@@ -26,11 +26,6 @@ jobs:
     name: 'YAML Lint'
     runs-on: 'self-hosted'
 
-    strategy:
-      matrix:
-        php-version:
-          - '8.1'
-
     steps:
 
       - name: 'Check out the repository.'
