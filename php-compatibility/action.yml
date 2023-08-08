@@ -40,8 +40,8 @@ runs:
       run: |
         php --version
         composer --version
-        phpcs --version
-        phpcs -i
+        ./tools/php-compat/vendor/bin/phpcs --version
+        ./tools/php-compat/vendor/bin/phpcs -i
 
     - name: 'Run PHP Compatibility Tests.'
       shell: bash
