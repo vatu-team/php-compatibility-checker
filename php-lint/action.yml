@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-action.json
 #
-# Vatu:    PHP Compatibility
+# Vatu:    PHP Lint
 # Version: 0.1.0
 # Author:  Michael Bragg <mike@vatu.dev>
 
-name: 'PHP Compatibility'
+name: 'PHP Lint'
 description: ''
 author: 'Vatu <hello@vatu.dev>'
 
@@ -31,7 +31,7 @@ runs:
         composer --version
         ./tools/php-compat/vendor/bin/parallel-lint --version
 
-    - name: "Run PHP Parallel Lint"
+    - name: "Run PHP Lint"
       shell: bash
       run: |
         ./tools/php-compat/vendor/bin/parallel-lint -e php --exclude ./tools/ --show-deprecated --no-progress ./
