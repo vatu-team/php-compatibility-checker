@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2023-08-09
+
+### Fixed
+
+- Config file version
+
+### Removed
+
+- Show deprecations option for linting command
+- Version declaration from action files
+
 ## [1.0.0] - 2023-08-08
 
 ### Added
