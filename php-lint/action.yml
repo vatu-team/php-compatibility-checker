@@ -34,4 +34,4 @@ runs:
     - name: "Run PHP Lint"
       shell: bash
       run: |
-        ./tools/php-compat/vendor/bin/parallel-lint -e php --exclude ./tools/ --show-deprecated --no-progress ./
+        ./tools/php-compat/vendor/bin/parallel-lint -e php --exclude ./tools/ --no-progress ./
