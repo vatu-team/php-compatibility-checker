@@ -32,7 +32,7 @@ runs:
     - name: 'Download PHPCompatibility config.'
       shell: bash
       run: |
-          curl -s -L https://raw.githubusercontent.com/vatu-team/php-compatibility-checker/1.0.0/phpcompatibility.dist.xml --output phpcompatibility.dist.xml --fail
+          curl -s -L https://raw.githubusercontent.com/vatu-team/php-compatibility-config/latest/phpcompatibility.dist.xml --output phpcompatibility.dist.xml --fail
       continue-on-error: false
 
     - name: 'Setup PHP Code Sniffer Config.'
