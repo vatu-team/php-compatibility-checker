@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2023-09-10
+
+### Added
+
+- Allow longer file paths in report output
+
+### Upgraded
+
+- Bump actions/setup-python from 4.7.0 to 4.7.1
+- Bump actions/checkout from 4.0.0 to 4.1.0
+
 ## [1.1.0] - 2023-08-09
 
 ### Fixed
