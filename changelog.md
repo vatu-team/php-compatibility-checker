@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-02-05
+
+### Upgraded
+
+- Bump dealerdirect/phpcodesniffer-composer installer:^1.2
+- Bump PHP Compatibility v^10.0.0@dev
+- Bump PHP Compatibility  Paragonie v^2.0.0@dev
+- Bump PHP Compatibility Password Compat v^2.0.0@dev
+- Bump PHP Compatibility WP v^3.0.0@dev
+
 ## [1.2.0] - 2023-09-10
 
 ### Added
