@@ -22,12 +22,12 @@ runs:
     - name: 'Install PHP Compatibility'
       shell: bash
       run: |
-        composer --working-dir=tools/php-compat require --dev squizlabs/php_codesniffer:"*" --quiet
         composer --working-dir=tools/php-compat config allow-plugins.dealerdirect/phpcodesniffer-composer-installer true --quiet
-        composer --working-dir=tools/php-compat require --dev dealerdirect/phpcodesniffer-composer-installer --quiet
-        composer --working-dir=tools/php-compat require --dev phpcsstandards/phpcsdevtools:^1.0 --quiet
-        composer --working-dir=tools/php-compat require phpcompatibility/php-compatibility:"dev-develop as 9.99.99" --quiet
-        composer --working-dir=tools/php-compat require phpcompatibility/phpcompatibility-wp:^2.0 --quiet
+        composer --working-dir=tools/php-compat require --dev dealerdirect/phpcodesniffer-composer-installer:^1.2 --quiet
+        composer --working-dir=tools/php-compat require --dev "phpcompatibility/php-compatibility":"^10.0.0@dev" --quiet
+        comopser --working-dir=tools/php-compat require --dev "phpcompatibility/phpcompatibility-paragonie":"^2.0.0@dev" --quiet
+        composer --working-dir=tools/php-compat require --dev "phpcompatibility/phpcompatibility-passwordcompat":"^2.0.0@dev" --quiet
+        composer --working-dir=tools/php-compat require --dev "phpcompatibility/phpcompatibility-wp":"^3.0.0@dev" --quiet
 
     - name: 'Download PHPCompatibility config.'
       shell: bash
